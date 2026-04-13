@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | CyberAttack Simulator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Additional white text fixes for about page */
+        .card, .card-body, .card-header {
+            color: #ffffff !important;
+        }
+        .text-muted, .text-secondary, small, .small {
+            color: #cbd5e1 !important;
+        }
+        p, span, div, h1, h2, h3, h4, h5, h6, li, strong {
+            color: #ffffff;
+        }
+        hr {
+            border-color: #334155;
+        }
+        .stat-card p {
+            color: #cbd5e1 !important;
+        }
+        .list-unstyled li {
+            color: #cbd5e1 !important;
+        }
+        .list-unstyled li i {
+            color: #10b981;
+        }
+        .badge {
+            color: white;
+        }
+        .mitigation-card {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border-left: 4px solid;
+            transition: transform 0.3s ease;
+        }
+        .mitigation-card:hover {
+            transform: translateX(8px);
+        }
+        .mitigation-card.ddos { border-left-color: #ef4444; }
+        .mitigation-card.sql { border-left-color: #f59e0b; }
+        .mitigation-card.phishing { border-left-color: #8b5cf6; }
+        .mitigation-card.malware { border-left-color: #ec489a; }
+        .mitigation-card.ransomware { border-left-color: #ef4444; }
+        .mitigation-card.mitm { border-left-color: #06b6d4; }
+        
+        .control-steps {
+            background: #0f172a;
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        .step-number {
+            width: 30px;
+            height: 30px;
+            background: #3b82f6;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            font-weight: bold;
+        }
+        .best-practice {
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 8px;
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-auto px-0 sidebar">
+                <div class="d-flex flex-column p-3">
+                    <div class="text-center mb-4 mt-2">
+                        <i class="bi bi-bug-fill" style="font-size: 2rem; color: #06b6d4;"></i>
+                        <h6 class="mt-2 text-white">CyberSec Lab</h6>
+                    </div>
+                    <nav class="nav flex-column">
+                        <a class="nav-link" href="index.html"><i class="bi bi-speedometer2"></i> Dashboard</a>
+                        <a class="nav-link" href="logs.html"><i class="bi bi-journal-text"></i> Logs</a>
+                        <a class="nav-link" href="reports.html"><i class="bi bi-graph-up"></i> Reports</a>
+                        <a class="nav-link" href="threat-map.html"><i class="bi bi-map"></i> Threat Map</a>
+                        <a class="nav-link" href="settings.html"><i class="bi bi-gear"></i> Settings</a>
+                        <a class="nav-link active" href="about.html"><i class="bi bi-info-circle"></i> About</a>
+                        <hr class="border-secondary">
+                        <a class="nav-link logout-btn" href="#"><i class="bi bi-box-arrow-right"></i> Logout</a>
+                    </nav>
+                </div>
+            </div>
+            
+            <!-- Main Content -->
+            <main class="col p-4">
+                <!-- Page Header with Back Button -->
+                <div class="page-header">
+                    <h2 style="color: white;"><i class="bi bi-info-circle-fill me-2"></i>About & Security Guide</h2>
+                    <div class="action-buttons">
+                        <a href="index.html" class="back-button">
+                            <i class="bi bi-arrow-left"></i> Back to Dashboard
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card text-center mb-4">
+                            <div class="card-body p-5">
+                                <div class="mb-4">
+                                    <i class="bi bi-shield-lock-fill" style="font-size: 5rem; color: #06b6d4;"></i>
+                                </div>
+                                
+                                <h1 class="glow-text mb-3" style="color: white;">CyberAttack Simulator</h1>
+                                <h5 style="color: #cbd5e1;">Professional Security Operations Dashboard</h5>
+                                
+                                <div class="row mt-4">
+                                    <div class="col-md-4">
+                                        <div class="stat-card">
+                                            <i class="bi bi-code-square" style="font-size: 2rem; color: #3b82f6;"></i>
+                                            <h5 class="mt-2" style="color: white;">Version 2.0</h5>
+                                            <p style="color: #cbd5e1;">Production Ready</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="stat-card">
+                                            <i class="bi bi-calendar-check" style="font-size: 2rem; color: #10b981;"></i>
+                                            <h5 class="mt-2" style="color: white;">2024 Release</h5>
+                                            <p style="color: #cbd5e1;">Latest Security Standards</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="stat-card">
+                                            <i class="bi bi-shield-check" style="font-size: 2rem; color: #f59e0b;"></i>
+                                            <h5 class="mt-2" style="color: white;">Educational Tool</h5>
+                                            <p style="color: #cbd5e1;">Learn Cyber Defense</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NEW SECTION: How to Control Attacks -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header" style="color: white; background: linear-gradient(135deg, #1e293b, #0f172a);">
+                                <i class="bi bi-shield-shaded me-2"></i> 
+                                <strong>🛡️ Cyber Attack Mitigation Guide</strong>
+                                <span class="badge bg-danger float-end">Learn to Defend</span>
+                            </div>
+                            <div class="card-body">
+                                <p style="color: #cbd5e1; font-size: 1.1rem;">
+                                    <i class="bi bi-info-circle-fill text-info"></i> 
+                                    Understanding how to detect, prevent, and respond to cyber attacks is crucial for any security professional. 
+                                    Below are comprehensive strategies to control and mitigate the most common cyber threats.
+                                </p>
+                                
+                                <hr style="border-color: #334155;">
+                                
+                                <!-- Attack 1: DDoS -->
+                                <div class="mitigation-card ddos p-3 mb-4">
+                                    <h4 style="color: #ef4444;">
+                                        <i class="bi bi-hdd-stack"></i> DDoS (Distributed Denial of Service) Attacks
+                                    </h4>
+                                    <p style="color: #cbd5e1;">Overwhelms systems with traffic, making services unavailable.</p>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="control-steps">
+                                                <strong style="color: #10b981;"><i class="bi bi-check-circle"></i> Prevention Strategies:</strong>
+                                                <ul class="mt-2">
+                                                    <li style="color: #cbd5e1;">✅ Deploy Web Application Firewall (WAF)</li>
+                                                    <li style="color: #cbd5e1;">✅ Use rate limiting and traffic filtering</li>
+                                                    <li style="color: #cbd5e1;">✅ Implement CDN services (Cloudflare, Akamai)</li>
+                                                    <li style="color: #cbd5e1;">✅ Configure network monitoring alerts</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="control-steps">
+                                                <strong style="color: #f59e0b;"><i class="bi bi-tools"></i> Response Actions:</strong>
+                                                <ul class="mt-2">
+                                                    <li style="color: #cbd5e1;">🔧 Enable DDoS protection services</li>
+                                                    <li style="color: #cbd5e1;">🔧 Scale up bandwidth/resources</li>
+                                                    <li style="color: #cbd5e1;">🔧 Block malicious IP addresses</li>
+                                                    <li style="color: #cbd5e1;">🔧 Activate emergency response plan</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Attack 2: SQL Injection -->
+                                <div class="mitigation-card sql p-3 mb-4">
+                                    <h4 style="color: #f59e0b;">
+                                        <i class="bi bi-database"></i> SQL Injection Attacks
+                                    </h4>
+                                    <p style="color: #cbd5e1;">Injects malicious SQL code to manipulate databases.</p>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="control-steps">
+                                                <strong style="color: #10b981;"><i class="bi bi-check-circle"></i> Prevention Strategies:</strong>
+                                                <ul class="mt-2">
+                                                    <li style="color: #cbd5e1;">✅ Use parameterized queries/Prepared statements</li>
+                                                    <li style="color: #cbd5e1;">✅ Implement input validation & sanitization</li>
+                                                    <li style="color: #cbd5e1;">✅ Use ORM frameworks (Entity Framework, Hibernate)</li>
+                                                    <li style="color: #cbd5e1;">✅ Regular security code reviews</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="control-steps">
+                                                <strong style="color: #f59e0b;"><i class="bi bi-tools"></i> Response Actions:</strong>
+                                                <ul class="mt-2">
+                                                    <li style="color: #cbd5e1;">🔧 Isolate compromised database</li>
+                                                    <li style="color: #cbd5e1;">🔧 Restore from clean backup</li>
+                                                    <li style="color: #cbd5e1;">🔧 Patch vulnerable code immediately</li>
+                                                    <li style="color: #cbd5e1;">🔧 Audit database access logs</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Attack 3: Phishing -->
+                                <div class="mitigation-card phishing p-3 mb-4">
+                                    <h4 style="color: #8b5cf6;">
+                                        <i class="bi bi-envelope-paper"></i> Phishing Attacks
+                                    </h4>
+                                    <p style="color: #cbd5e1;">Deceives users into revealing sensitive information.</p>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="control-steps">
+                                                <strong style="color: #10b981;"><i class="bi bi-check-circle"></i> Prevention Strategies:</strong>
+                                                <ul class="mt-2">
+                                                    <li style="color: #cbd5e1;">✅ Employee security awareness training</li>
+                                                    <li style="color: #cbd5e1;">✅ Implement email filtering & SPF/DKIM</li>
+                                                    <li style="color: #cbd5e1;">✅ Use multi-factor authentication (MFA)</li>
+                                                    <li style="color: #cbd5e1;">✅ Regular phishing simulation tests</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="control-steps">
+                                                <strong style="color: #f59e0b;"><i class="bi bi-tools"></i> Response Actions:</strong>
+                                                <ul class="mt-2">
+                                                    <li style="color: #cbd5e1;">🔧 Report to security team immediately</li>
+                                                    <li style="color: #cbd5e1;">🔧 Reset compromised credentials</li>
+                                                    <li style="color: #cbd5e1;">🔧 Block malicious domains/URLs</li>
+                                                    <li style="color: #cbd5e1;">🔧 Notify affected users</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Attack 4: Malware -->
+                                <div class="mitigation-card malware p-3 mb-4">
+                                    <h4 style="color: #ec489a;">
+                                        <i class="bi bi-bug"></i> Malware Infections
+                                    </h4>
+                                    <p style="color: #cbd5e1;">Malicious software designed to damage or disrupt systems.</p>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="control-steps">
+                                                <strong style="color: #10b981;"><i class="bi bi-check-circle"></i> Prevention Strategies:</strong>
+                                                <ul class="mt-2">
+                                                    <li style="color: #cbd5e1;">✅ Install & update antivirus/anti-malware</li>
+                                                    <li style="color: #cbd5e1;">✅ Keep systems and software patched</li>
+                                                    <li style="color: #cbd5e1;">✅ Restrict administrative privileges</li>
+                                                    <li style="color: #cbd5e1;">✅ Application whitelisting</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="control-steps">
+                                                <strong style="color: #f59e0b;"><i class="bi bi-tools"></i> Response Actions:</strong>
+                                                <ul class="mt-2">
+                                                    <li style="color: #cbd5e1;">🔧 Isolate infected systems from network</li>
+                                                    <li style="color: #cbd5e1;">🔧 Run full system antivirus scan</li>
+                                                    <li style="color: #cbd5e1;">🔧 Reinstall OS if necessary</li>
+                                                    <li style="color: #cbd5e1;">🔧 Restore data from clean backups</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Attack 5: Ransomware -->
+                                <div class="mitigation-card ransomware p-3 mb-4">
+                                    <h4 style="color: #ef4444;">
+                                        <i class="bi bi-lock"></i> Ransomware Attacks
+                                    </h4>
+                                    <p style="color: #cbd5e1;">Encrypts data and demands ransom for decryption.</p>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="control-steps">
+                                                <strong style="color: #10b981;"><i class="bi bi-check-circle"></i> Prevention Strategies:</strong>
+                                                <ul class="mt-2">
+                                                    <li style="color: #cbd5e1;">✅ Regular offline/cloud backups (3-2-1 rule)</li>
+                                                    <li style="color: #cbd5e1;">✅ Network segmentation</li>
+                                                    <li style="color: #cbd5e1;">✅ Disable unnecessary services (RDP)</li>
+                                                    <li style="color: #cbd5e1;">✅ Endpoint detection & response (EDR)</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="control-steps">
+                                                <strong style="color: #f59e0b;"><i class="bi bi-tools"></i> Response Actions:</strong>
+                                                <ul class="mt-2">
+                                                    <li style="color: #cbd5e1;">🔧 DO NOT pay the ransom!</li>
+                                                    <li style="color: #cbd5e1;">🔧 Disconnect infected systems immediately</li>
+                                                    <li style="color: #cbd5e1;">🔧 Restore from clean backups</li>
+                                                    <li style="color: #cbd5e1;">🔧 Report to law enforcement</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Attack 6: MITM -->
+                                <div class="mitigation-card mitm p-3 mb-4">
+                                    <h4 style="color: #06b6d4;">
+                                        <i class="bi bi-wifi"></i> Man-in-the-Middle (MITM) Attacks
+                                    </h4>
+                                    <p style="color: #cbd5e1;">Intercepts communication between two parties.</p>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="control-steps">
+                                                <strong style="color: #10b981;"><i class="bi bi-check-circle"></i> Prevention Strategies:</strong>
+                                                <ul class="mt-2">
+                                                    <li style="color: #cbd5e1;">✅ Use HTTPS/TLS encryption everywhere</li>
+                                                    <li style="color: #cbd5e1;">✅ Avoid public/unsecured Wi-Fi</li>
+                                                    <li style="color: #cbd5e1;">✅ Use VPN for remote access</li>
+                                                    <li style="color: #cbd5e1;">✅ Implement certificate pinning</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="control-steps">
+                                                <strong style="color: #f59e0b;"><i class="bi bi-tools"></i> Response Actions:</strong>
+                                                <ul class="mt-2">
+                                                    <li style="color: #cbd5e1;">🔧 Terminate suspicious connections</li>
+                                                    <li style="color: #cbd5e1;">🔧 Rotate all session tokens/keys</li>
+                                                    <li style="color: #cbd5e1;">🔧 Investigate network infrastructure</li>
+                                                    <li style="color: #cbd5e1;">🔧 Update certificate authorities</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <hr style="border-color: #334155;">
+                                
+                                <!-- Best Practices Section -->
+                                <h4 style="color: white; margin-top: 1rem;">
+                                    <i class="bi bi-star-fill text-warning"></i> General Security Best Practices
+                                </h4>
+                                <div class="row mt-3">
+                                    <div class="col-md-4">
+                                        <div class="best-practice">
+                                            <i class="bi bi-key text-success"></i>
+                                            <strong>Strong Authentication</strong>
+                                            <p class="small" style="color: #cbd5e1;">Use MFA, strong passwords, and password managers</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="best-practice">
+                                            <i class="bi bi-arrow-repeat text-info"></i>
+                                            <strong>Regular Updates</strong>
+                                            <p class="small" style="color: #cbd5e1;">Keep all software and systems patched</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="best-practice">
+                                            <i class="bi bi-hdd-stack-fill text-warning"></i>
+                                            <strong>Backup Strategy</strong>
+                                            <p class="small" style="color: #cbd5e1;">Follow 3-2-1 backup rule (3 copies, 2 media, 1 offsite)</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="best-practice">
+                                            <i class="bi bi-person-badge text-primary"></i>
+                                            <strong>Security Training</strong>
+                                            <p class="small" style="color: #cbd5e1;">Regular employee cybersecurity awareness</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="best-practice">
+                                            <i class="bi bi-shield-lock text-danger"></i>
+                                            <strong>Network Security</strong>
+                                            <p class="small" style="color: #cbd5e1;">Firewalls, IDS/IPS, and network segmentation</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="best-practice">
+                                            <i class="bi bi-file-earmark-text text-secondary"></i>
+                                            <strong>Incident Response Plan</strong>
+                                            <p class="small" style="color: #cbd5e1;">Have a documented and tested response plan</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <hr style="border-color: #334155;">
+                                
+                                <!-- Quick Reference Table -->
+                                <h4 style="color: white;">
+                                    <i class="bi bi-table"></i> Quick Response Reference
+                                </h4>
+                                <div class="table-responsive mt-3">
+                                    <table class="table table-dark table-hover">
+                                        <thead>
+                                            <tr style="background: #1e293b;">
+                                                <th>Attack Type</th>
+                                                <th>Immediate Action</th>
+                                                <th>Prevention Priority</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr><td>DDoS</td><td>Enable DDoS protection</td><td>High - Deploy WAF/CDN</td></tr>
+                                            <tr><td>SQL Injection</td><td>Take DB offline</td><td>Critical - Parameterized queries</td></tr>
+                                            <tr><td>Phishing</td><td>Reset credentials</td><td>High - User training</td></tr>
+                                            <tr><td>Malware</td><td>Isolate system</td><td>Critical - Anti-malware</td></tr>
+                                            <tr><td>Ransomware</td><td>Disconnect network</td><td>Critical - Backups</td></tr>
+                                            <tr><td>MITM</td><td>Terminate connections</td><td>High - Encryption</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <div class="alert alert-success mt-4" style="background: #064e3b; border-color: #10b981;">
+                                    <i class="bi bi-lightbulb"></i>
+                                    <strong>Pro Tip:</strong> The best defense is a layered security approach (Defense in Depth). Never rely on a single security control!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Features Section (Original Content) -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-header" style="color: white;">
+                                <i class="bi bi-star-fill text-warning"></i> Features Included
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2" style="color: #cbd5e1;"><i class="bi bi-check-circle-fill text-success me-2"></i> Real-time Attack Simulation Dashboard</li>
+                                    <li class="mb-2" style="color: #cbd5e1;"><i class="bi bi-check-circle-fill text-success me-2"></i> Interactive Global Threat Map</li>
+                                    <li class="mb-2" style="color: #cbd5e1;"><i class="bi bi-check-circle-fill text-success me-2"></i> Comprehensive Security Logs with Search</li>
+                                    <li class="mb-2" style="color: #cbd5e1;"><i class="bi bi-check-circle-fill text-success me-2"></i> Automated Report Generation</li>
+                                    <li class="mb-2" style="color: #cbd5e1;"><i class="bi bi-check-circle-fill text-success me-2"></i> Professional Dark Theme UI</li>
+                                    <li class="mb-2" style="color: #cbd5e1;"><i class="bi bi-check-circle-fill text-success me-2"></i> Session Management & Authentication</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-header" style="color: white;">
+                                <i class="bi bi-tools"></i> Technologies Used
+                            </div>
+                            <div class="card-body">
+                                <div class="mt-2">
+                                    <span class="badge bg-primary m-1">HTML5</span>
+                                    <span class="badge bg-primary m-1">CSS3</span>
+                                    <span class="badge bg-primary m-1">JavaScript ES6</span>
+                                    <span class="badge bg-primary m-1">Bootstrap 5</span>
+                                    <span class="badge bg-primary m-1">Chart.js</span>
+                                    <span class="badge bg-primary m-1">Leaflet Maps</span>
+                                </div>
+                                <hr style="border-color: #334155;">
+                                <p style="color: #cbd5e1;">
+                                    <i class="bi bi-bug"></i> Academic Project Submission<br>
+                                    Cyber Security Simulation Platform
+                                </p>
+                                <div class="mt-3">
+                                    <a href="index.html" class="btn btn-cyber" style="color: white;">
+                                        <i class="bi bi-speedometer2"></i> Go to Dashboard
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <script src="js/auth.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        AuthManager.requireAuth();
+    </script>
+</body>
+</html>

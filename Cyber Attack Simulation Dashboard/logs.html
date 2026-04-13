@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Logs | CyberAttack Simulator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .card, .card-body, .card-header {
+            color: #ffffff !important;
+        }
+        .text-muted, .text-secondary, small {
+            color: #cbd5e1 !important;
+        }
+        p, span, div, h1, h2, h3, h4, h5, h6, label, strong {
+            color: #ffffff;
+        }
+        .table, .table td, .table th {
+            color: #ffffff !important;
+        }
+        .back-button {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border: 1px solid #3b82f6;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 40px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+        }
+        .back-button:hover {
+            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            color: white;
+            transform: translateX(-4px);
+        }
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-auto px-0 sidebar">
+                <div class="d-flex flex-column p-3">
+                    <div class="text-center mb-4 mt-2">
+                        <i class="bi bi-bug-fill" style="font-size: 2rem; color: #06b6d4;"></i>
+                        <h6 class="mt-2 text-white">CyberSec Lab</h6>
+                    </div>
+                    <nav class="nav flex-column">
+                        <a class="nav-link" href="index.html"><i class="bi bi-speedometer2"></i> Dashboard</a>
+                        <a class="nav-link active" href="logs.html"><i class="bi bi-journal-text"></i> Logs</a>
+                        <a class="nav-link" href="reports.html"><i class="bi bi-graph-up"></i> Reports</a>
+                        <a class="nav-link" href="threat-map.html"><i class="bi bi-map"></i> Threat Map</a>
+                        <a class="nav-link" href="settings.html"><i class="bi bi-gear"></i> Settings</a>
+                        <a class="nav-link" href="about.html"><i class="bi bi-info-circle"></i> About</a>
+                        <hr class="border-secondary">
+                        <a class="nav-link logout-btn" href="#"><i class="bi bi-box-arrow-right"></i> Logout</a>
+                    </nav>
+                </div>
+            </div>
+            
+            <!-- Main Content -->
+            <main class="col p-4">
+                <div class="page-header">
+                    <h2 style="color: white;"><i class="bi bi-journal-code me-2"></i>Security Event Logs</h2>
+                    <a href="index.html" class="back-button">
+                        <i class="bi bi-arrow-left"></i> Back to Dashboard
+                    </a>
+                </div>
+                
+                <div id="logsContainer">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <input type="text" id="logSearch" class="form-control bg-dark text-white border-secondary" placeholder="Search attacks or IP...">
+                                </div>
+                                <div class="col-md-3">
+                                    <select id="severityFilter" class="form-select bg-dark text-white border-secondary">
+                                        <option value="">All Severities</option>
+                                        <option value="Critical">Critical</option>
+                                        <option value="High">High</option>
+                                        <option value="Medium">Medium</option>
+                                        <option value="Low">Low</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <button class="btn btn-outline-cyber w-100" onclick="exportLogs()">
+                                        <i class="bi bi-download"></i> Export Logs
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-dark table-hover">
+                                    <thead>
+                                        <tr><th>Timestamp</th><th>Attack Type</th><th>Source IP</th><th>Severity</th><th>Status</th></tr>
+                                    </thead>
+                                    <tbody id="logsTableBody"></tbody>
+                                 </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <script src="js/auth.js"></script>
+    <script src="js/logs.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        if (typeof AuthManager !== 'undefined') {
+            AuthManager.requireAuth();
+        }
+    </script>
+</body>
+</html>

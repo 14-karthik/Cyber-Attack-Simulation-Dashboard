@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | CyberAttack Simulator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* White text fixes for dashboard */
+        .card, .card-body, .card-header, .stat-card {
+            color: #ffffff !important;
+        }
+        .text-muted, .text-secondary, small, .small {
+            color: #cbd5e1 !important;
+        }
+        p, span, div, h1, h2, h3, h4, h5, h6, label, strong {
+            color: #ffffff;
+        }
+        .stat-card p {
+            color: #cbd5e1 !important;
+        }
+        .stat-number {
+            color: #ffffff !important;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        .alert-item {
+            background: rgba(30, 41, 59, 0.9);
+        }
+        .alert-item strong, .alert-item small, .alert-item div {
+            color: #ffffff !important;
+        }
+        .badge {
+            color: white;
+        }
+        hr {
+            border-color: #334155;
+        }
+        .card-header {
+            color: white !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-auto px-0 sidebar">
+                <div class="d-flex flex-column p-3">
+                    <div class="text-center mb-4 mt-2">
+                        <i class="bi bi-bug-fill" style="font-size: 2rem; color: #06b6d4;"></i>
+                        <h6 class="mt-2 text-white">CyberSec Lab</h6>
+                    </div>
+                    <nav class="nav flex-column">
+                        <a class="nav-link active" href="index.html"><i class="bi bi-speedometer2"></i> Dashboard</a>
+                        <a class="nav-link" href="logs.html"><i class="bi bi-journal-text"></i> Logs</a>
+                        <a class="nav-link" href="reports.html"><i class="bi bi-graph-up"></i> Reports</a>
+                        <a class="nav-link" href="threat-map.html"><i class="bi bi-map"></i> Threat Map</a>
+                        <a class="nav-link" href="settings.html"><i class="bi bi-gear"></i> Settings</a>
+                        <a class="nav-link" href="about.html"><i class="bi bi-info-circle"></i> About</a>
+                        <hr class="border-secondary">
+                        <a class="nav-link logout-btn" href="#"><i class="bi bi-box-arrow-right"></i> Logout</a>
+                    </nav>
+                </div>
+            </div>
+            
+            <!-- Main Content -->
+            <main class="col p-4">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 style="color: white;"><i class="bi bi-shield-shaded me-2"></i>Threat Intelligence Dashboard</h2>
+                    <span class="badge bg-danger animate-pulse" style="color: white;">🟢 LIVE MONITORING</span>
+                </div>
+                
+                <!-- User Info Bar -->
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <div class="card" style="background: #1e293b;">
+                            <div class="card-body py-2">
+                                <div class="d-flex justify-content-between align-items-center flex-wrap">
+                                    <div>
+                                        <i class="bi bi-person-circle"></i> 
+                                        <span id="userNameDisplay" style="color: white;">Loading...</span>
+                                        <span class="badge bg-info ms-2" id="userRoleBadge"></span>
+                                    </div>
+                                    <div>
+                                        <i class="bi bi-shield-check text-success"></i>
+                                        <span id="userPermissions" style="color: #cbd5e1;"></span>
+                                    </div>
+                                    <button class="btn btn-sm btn-outline-danger" onclick="AuthManager.logout()">
+                                        <i class="bi bi-box-arrow-right"></i> Logout
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dashboard Content -->
+                <div id="dashboardContent">
+                    <!-- Stats Row -->
+                    <div class="row g-4 mb-4">
+                        <div class="col-md-3">
+                            <div class="stat-card text-center" id="totalAttacks">
+                                <div class="stat-icon mx-auto mb-2"><i class="bi bi-graph-up" style="color: #3b82f6;"></i></div>
+                                <h3 class="stat-number" style="color: white;">0</h3>
+                                <p style="color: #cbd5e1;">Total Attacks</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stat-card text-center" id="blockedAttacks">
+                                <div class="stat-icon mx-auto mb-2"><i class="bi bi-shield-check" style="color: #10b981;"></i></div>
+                                <h3 class="stat-number" style="color: white;">0</h3>
+                                <p style="color: #cbd5e1;">Blocked</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stat-card text-center" id="criticalAlerts">
+                                <div class="stat-icon mx-auto mb-2"><i class="bi bi-exclamation-triangle" style="color: #ef4444;"></i></div>
+                                <h3 class="stat-number" style="color: white;">0</h3>
+                                <p style="color: #cbd5e1;">Critical Alerts</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stat-card text-center" id="activeThreats">
+                                <div class="stat-icon mx-auto mb-2"><i class="bi bi-activity" style="color: #f59e0b;"></i></div>
+                                <h3 class="stat-number" style="color: white;">0</h3>
+                                <p style="color: #cbd5e1;">Active Threats</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Chart & Alerts -->
+                    <div class="row g-4">
+                        <div class="col-lg-7">
+                            <div class="card">
+                                <div class="card-header" style="color: white; background: #111827;">
+                                    <i class="bi bi-bar-chart-steps"></i> Attack Timeline (24h)
+                                </div>
+                                <div class="card-body" style="height: 320px; background: #111827;">
+                                    <canvas id="attackChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="card">
+                                <div class="card-header" style="color: white; background: #111827;">
+                                    <i class="bi bi-bell-fill"></i> Recent Alerts
+                                    <span class="badge bg-danger float-end" style="color: white;">LIVE</span>
+                                </div>
+                                <div class="card-body" id="recentAlertsList" style="max-height: 320px; overflow-y: auto; background: #111827;">
+                                    <div class="alert-item">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <span class="threat-level threat-critical"></span>
+                                                <strong style="color: white;">Loading threats...</strong>
+                                                <small class="text-muted ms-2" style="color: #cbd5e1;">Scanning</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- System Status -->
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header" style="color: white; background: #111827;">
+                                    <i class="bi bi-info-circle"></i> System Status
+                                </div>
+                                <div class="card-body" style="background: #111827;">
+                                    <div class="row">
+                                        <div class="col-md-3 col-6">
+                                            <p style="color: white;"><i class="bi bi-check-circle-fill text-success"></i> <strong>Firewall:</strong> <span style="color: #10b981;">Active</span></p>
+                                        </div>
+                                        <div class="col-md-3 col-6">
+                                            <p style="color: white;"><i class="bi bi-check-circle-fill text-success"></i> <strong>IDS/IPS:</strong> <span style="color: #10b981;">Monitoring</span></p>
+                                        </div>
+                                        <div class="col-md-3 col-6">
+                                            <p style="color: white;"><i class="bi bi-shield-check"></i> <strong>Threat Feed:</strong> <span style="color: #06b6d4;">Real-time</span></p>
+                                        </div>
+                                        <div class="col-md-3 col-6">
+                                            <p style="color: white;"><i class="bi bi-clock-history"></i> <strong>Uptime:</strong> <span style="color: #cbd5e1;">99.99%</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        if (typeof AuthManager !== 'undefined') {
+            AuthManager.requireAuth();
+        }
+    </script>
+</body>
+</html>

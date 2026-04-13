@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings | CyberAttack Simulator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Additional white text fixes for settings page */
+        .card, .card-body, .card-header {
+            color: #ffffff !important;
+        }
+        .text-muted, .text-secondary, small, .small {
+            color: #cbd5e1 !important;
+        }
+        p, span, div, h1, h2, h3, h4, h5, h6, label, strong {
+            color: #ffffff;
+        }
+        .form-check-label {
+            color: #ffffff !important;
+        }
+        hr {
+            border-color: #334155;
+        }
+        .btn-outline-cyber {
+            color: #3b82f6;
+        }
+        .btn-outline-cyber:hover {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-auto px-0 sidebar">
+                <div class="d-flex flex-column p-3">
+                    <div class="text-center mb-4 mt-2">
+                        <i class="bi bi-bug-fill" style="font-size: 2rem; color: #06b6d4;"></i>
+                        <h6 class="mt-2 text-white">CyberSec Lab</h6>
+                    </div>
+                    <nav class="nav flex-column">
+                        <a class="nav-link" href="index.html"><i class="bi bi-speedometer2"></i> Dashboard</a>
+                        <a class="nav-link" href="logs.html"><i class="bi bi-journal-text"></i> Logs</a>
+                        <a class="nav-link" href="reports.html"><i class="bi bi-graph-up"></i> Reports</a>
+                        <a class="nav-link" href="threat-map.html"><i class="bi bi-map"></i> Threat Map</a>
+                        <a class="nav-link active" href="settings.html"><i class="bi bi-gear"></i> Settings</a>
+                        <a class="nav-link" href="about.html"><i class="bi bi-info-circle"></i> About</a>
+                        <hr class="border-secondary">
+                        <a class="nav-link logout-btn" href="#"><i class="bi bi-box-arrow-right"></i> Logout</a>
+                    </nav>
+                </div>
+            </div>
+            
+            <!-- Main Content -->
+            <main class="col p-4">
+                <!-- Page Header with Back Button -->
+                <div class="page-header">
+                    <h2 style="color: white;"><i class="bi bi-gear-fill me-2"></i>System Settings</h2>
+                    <div class="action-buttons">
+                        <a href="index.html" class="back-button">
+                            <i class="bi bi-arrow-left"></i> Back to Dashboard
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="card settings-card">
+                            <div class="card-header" style="color: white;">
+                                <i class="bi bi-sliders2"></i> Preferences
+                            </div>
+                            <div class="card-body">
+                                <div class="form-check form-switch mb-3">
+                                    <input class="form-check-input" type="checkbox" id="notificationsToggle" style="cursor: pointer;">
+                                    <label class="form-check-label" for="notificationsToggle" style="color: white;">
+                                        <i class="bi bi-bell"></i> Enable Real-time Notifications
+                                    </label>
+                                    <small class="d-block mt-1" style="color: #cbd5e1;">Get alerts for critical threats</small>
+                                </div>
+                                
+                                <hr style="border-color: #334155;">
+                                
+                                <div class="form-check form-switch mb-3">
+                                    <input class="form-check-input" type="checkbox" id="autoRefreshToggle" style="cursor: pointer;">
+                                    <label class="form-check-label" for="autoRefreshToggle" style="color: white;">
+                                        <i class="bi bi-arrow-repeat"></i> Auto-refresh Dashboard
+                                    </label>
+                                    <small class="d-block mt-1" style="color: #cbd5e1;">Automatically update data every 8 seconds</small>
+                                </div>
+                                
+                                <hr style="border-color: #334155;">
+                                
+                                <div class="form-check form-switch mb-3">
+                                    <input class="form-check-input" type="checkbox" id="soundAlertsToggle" style="cursor: pointer;">
+                                    <label class="form-check-label" for="soundAlertsToggle" style="color: white;">
+                                        <i class="bi bi-volume-up"></i> Sound Alerts
+                                    </label>
+                                    <small class="d-block mt-1" style="color: #cbd5e1;">Play sound on critical alerts</small>
+                                </div>
+                                
+                                <hr style="border-color: #334155;">
+                                
+                                <div class="mt-4">
+                                    <h6 style="color: white;"><i class="bi bi-palette"></i> Theme Preference</h6>
+                                    <div class="btn-group mt-2" role="group">
+                                        <button type="button" class="btn btn-outline-cyber active" id="darkThemeBtn" style="color: white; background: #3b82f6;">
+                                            <i class="bi bi-moon-stars"></i> Dark
+                                        </button>
+                                        <button type="button" class="btn btn-outline-cyber" id="lightThemeBtn" disabled style="color: #cbd5e1;">
+                                            <i class="bi bi-sun"></i> Light (Coming Soon)
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Session Info Card -->
+                        <div class="card mt-4">
+                            <div class="card-header" style="color: white;">
+                                <i class="bi bi-shield-lock"></i> Security Session
+                            </div>
+                            <div class="card-body">
+                                <p style="color: white;"><i class="bi bi-person-circle"></i> Logged in as: <strong id="usernameDisplay" style="color: #3b82f6;">Admin</strong></p>
+                                <p style="color: white;"><i class="bi bi-clock-history"></i> Session started: <span id="sessionTime" style="color: #cbd5e1;">Just now</span></p>
+                                <button class="btn btn-danger btn-sm logout-btn" id="sessionLogoutBtn" style="color: white;">
+                                    <i class="bi bi-box-arrow-right"></i> End Session
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-header" style="color: white;">
+                                <i class="bi bi-info-circle"></i> About Settings
+                            </div>
+                            <div class="card-body">
+                                <p style="color: #cbd5e1;">Changes are saved automatically to your browser. Your preferences will be remembered for future sessions.</p>
+                                <hr style="border-color: #334155;">
+                                <div class="text-center">
+                                    <i class="bi bi-shield-check" style="font-size: 2rem; color: #10b981;"></i>
+                                    <p class="mt-2" style="color: #cbd5e1;">All settings are stored locally</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <script src="js/auth.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        // Authentication check
+        AuthManager.requireAuth();
+        
+        // Display user info
+        const user = AuthManager.getUser();
+        if (user) {
+            document.getElementById('usernameDisplay').textContent = user.username;
+            document.getElementById('sessionTime').textContent = new Date(user.lastLogin).toLocaleTimeString();
+        }
+        
+        // Session logout button
+        document.getElementById('sessionLogoutBtn')?.addEventListener('click', function() {
+            AuthManager.logout();
+        });
+    </script>
+</body>
+</html>
